@@ -1,0 +1,18 @@
+---
+title: My college magazine
+subtitle: part 2
+---
+
+%header.mod-page-title
+  %h1 My college magazine
+  %h2 part 2
+
+%article.mod-article.mod-photoset
+  .body#content
+    %p
+      This issue i was in charge of photo's. I took the pictures of the Grolsch beer bottles in a studio, the teacher didnt believe i made them myself untill i showed him the RAW files. Click on the picture to view the magazine in PDF.
+
+    %a{:href => '/files/hop2.pdf', :target => '_blank'}
+      %figure
+        %img{:src => '/images/hop_2.png'}
+    = partial 'hobby_footer'

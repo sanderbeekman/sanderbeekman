@@ -1,0 +1,18 @@
+---
+title: My college magazine
+subtitle: part 1
+---
+
+%header.mod-page-title
+  %h1 My college magazine
+  %h2 part 1
+
+%article.mod-article.mod-photoset
+  .body#content
+    %p
+      The 2nd year of college we had to create a magazine of something we all liked. Luckely we all liked beer. This issue i was visual designer. Click the thumbnail to view the magazine in PDF.
+
+    %a{:href => '/files/hop1.pdf', :target => '_blank'}
+      %figure
+        %img{:src => '/images/hop_1.png'}
+    = partial 'hobby_footer'

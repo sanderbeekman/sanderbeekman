@@ -1,0 +1,38 @@
+@mixin h1
+  font-size: 4rem
+  font-weight: bold
+  margin-bottom: 0.5rem
+  line-height: 1.2em
+
+@mixin h2-sub
+  font-size: 2rem
+  line-height: 1.2em
+
+@mixin h2
+  font-size: 2rem
+  line-height: 1.2em
+  font-weight: bold
+
+@mixin h3
+  font-size: 1.2rem
+  line-height: 1.2em
+
+@mixin p
+  font-size: 1rem
+  line-height: 1.2rem
+
+body
+  font-family: $font-family
+  color: $font-color
+  text-align: center
+  -webkit-font-smoothing: antialiased
+
+a
+  @include link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color)
+
+small
+  font-size: 0.9em
+
+p, ul, ol, dl, blockquote, hr, pre, table, fieldset, article, article footer, nav
+  line-height: 1.5em
+

@@ -1,0 +1,57 @@
+!!! 5
+
+%html
+  %head
+    %meta{:charset => 'utf-8'}
+    %meta{:content => 'IE=edge,chrome=1', 'http-equiv' => 'X-UA-Compatible'}
+
+    %meta{:name => "author",    :content => "Sander Beekman"}
+    %meta{:name => "publisher", :content => "Sander Beekman"}
+    %meta{:name => "copyright", :content => "&copy; 2010-#{Date.today.year} by Sander Beekman"}
+    %meta{:name => "host",      :content => "http://matsimitsu.com"}
+    %meta{:name => "generator", :content => "Middleman App"}
+
+    %meta{:name => "description",   :content => description}
+    %meta{:name => "abstract",      :content => "Documenting trips abroad through photography."}
+    %meta{:name => "keywords",      :content => "travel, asia, usa, blog"}
+    %meta{:name => "revisit-after", :content => "2 days"}
+
+    = yield_content :meta
+
+    %title= page_title
+
+    = stylesheet_link_tag 'site'
+    = stylesheet_link_tag 'mapbox'
+    = stylesheet_link_tag 'syntax'
+
+    = yield_content :head
+
+  %body{:class => page_classes}
+    %header.mod-header{:class => %w(blog photoset).include?((blog_controller.name.to_s rescue ''))}
+      .container
+        %hgroup
+          %h1= link_to 'Sander Beekman', '/'
+          - if (blog_controller rescue false) # If we're on a blog
+            %h2= link_to blog_controller.name, "#{blog_controller.options[:prefix]}"
+            - if current_article && trip_slug = current_article.metadata[:page]['trip_slug'] # If there's a trip and an article
+              %h2= link_to trip_by_slug(trip_slug).title, trip_slug_path(trip_slug)
+          - elsif current_page.data.title # If there's a page title set
+            %h2= link_to current_page.data.title, current_page.url
+
+        %nav
+          %ul
+            %li= link_to 'Home', "/"
+
+    #main
+      = yield
+
+    %footer.mod-footer
+      = yield_content(:footer)
+
+      %p
+        &copy; #{Date.today.year} - Sander Beekman - <a href="mailto:sanderbeekman@gmail.com"><i class="fa fa-envelope-o"></i></a> -
+        <a href="https://instagram.com/Sanderbkmn" target="_blank"><i class="fa fa-instagram"></i></a> -
+        <a href="https://facebook.com/sanderbeekman22" target="_blank"><i class="fa fa-facebook"></i></a>
+
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'application'
